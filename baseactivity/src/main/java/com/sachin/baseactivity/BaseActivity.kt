@@ -1,11 +1,17 @@
 package com.sachin.baseactivity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 
-class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_base)
+        setContentView(setContentView())
     }
+
+    abstract fun setContentView(): Int
+    abstract fun setTitleToToolbar():Int
+
+
 }
