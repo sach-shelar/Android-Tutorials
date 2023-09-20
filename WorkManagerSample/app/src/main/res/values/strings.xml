@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WorkManagerSample</string>
+    <string name="str_welcome_dear">Welcome Dear,</string>
+    <string name="str_slogun">App will create and display worker thread information</string>
+</resources>
