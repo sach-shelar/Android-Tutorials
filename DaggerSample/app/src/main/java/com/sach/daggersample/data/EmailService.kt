@@ -6,15 +6,16 @@ interface NotificationService {
     fun send()
 }
 
-class SmsService : NotificationService {
+class SmsService(private val retryCount: Int) : NotificationService {
     override fun send() {
-        Log.e(Constant.TAG, "SMS Sent")
+        Log.e(Constant.TAG, "SMS Sent - retry count $retryCount")
     }
 }
-class EmailService : NotificationService {
+class EmailService(private val retryCount:Int) : NotificationService {
 
     override fun send() {
-        Log.e(Constant.TAG, "email sent")
+
+        Log.e(Constant.TAG, "email sent - retry count $retryCount")
     }
 
 }

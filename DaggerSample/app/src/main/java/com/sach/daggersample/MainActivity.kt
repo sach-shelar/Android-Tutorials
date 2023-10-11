@@ -13,7 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.sach.daggersample.dagger.DaggerAppComponent
+import com.sach.daggersample.data.NotificationService
 import com.sach.daggersample.data.UserRegistrationService
+import com.sach.daggersample.data.module.ServiceModule
 import com.sach.daggersample.ui.theme.DaggerSampleTheme
 import javax.inject.Inject
 
@@ -27,11 +29,12 @@ class MainActivity : ComponentActivity() {
         setContent {
 
 
-            val component = DaggerAppComponent.builder().build()
+            val component = DaggerAppComponent.factory().create(5)
+
             component.inject(this)
 
 
-            userRegistrationService.registerUser("india@gmail.com","india@123")
+            userRegistrationService.registerUser("india@gmail.com", "india@123")
 
 
 

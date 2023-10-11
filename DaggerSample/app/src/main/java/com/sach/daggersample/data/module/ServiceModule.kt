@@ -9,18 +9,18 @@ import dagger.Provides
 import javax.inject.Named
 
 @Module
-class ServiceModule {
+class ServiceModule() {
 
     @Named("email")
     @Provides
-    fun provideService(): NotificationService {
-        return EmailService()
+    fun provideService(retryCount: Int): NotificationService {
+        return EmailService(retryCount)
     }
 
     @MessageQualifiers
     @Provides
-    fun provideSmsService(): NotificationService{
-        return SmsService()
+    fun provideSmsService(retryCount: Int): NotificationService{
+        return SmsService(retryCount)
     }
 
 
