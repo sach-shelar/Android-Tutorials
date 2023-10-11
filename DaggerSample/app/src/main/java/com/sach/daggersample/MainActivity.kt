@@ -13,21 +13,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.sach.daggersample.dagger.DaggerAppComponent
+import com.sach.daggersample.data.UserRegistrationService
 import com.sach.daggersample.ui.theme.DaggerSampleTheme
+import javax.inject.Inject
 
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var userRegistrationService: UserRegistrationService
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
 
 
-            val userRegistrationService =
-                DaggerAppComponent.builder().build().userRegistrationService()
-            userRegistrationService.registerUser("sachrohile@gmail.com", "insa7777insa")
+            val component = DaggerAppComponent.builder().build()
+            component.inject(this)
 
 
-
-
+            userRegistrationService.registerUser("india@gmail.com","india@123")
 
 
 
