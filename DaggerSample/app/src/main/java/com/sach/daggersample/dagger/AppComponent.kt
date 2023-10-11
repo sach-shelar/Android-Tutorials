@@ -7,7 +7,9 @@ import com.sach.daggersample.data.module.ServiceModule
 import com.sach.daggersample.data.module.UserRepositoryModule
 import dagger.BindsInstance
 import dagger.Component
+import javax.inject.Singleton
 
+@AppScope
 @Component(modules = [ServiceModule::class, UserRepositoryModule::class])
 interface AppComponent {
 
