@@ -1,5 +1,6 @@
 package com.sach.daggersample.data.module
 
+import com.sach.daggersample.dagger.MessageQualifiers
 import com.sach.daggersample.data.EmailService
 import com.sach.daggersample.data.NotificationService
 import com.sach.daggersample.data.SmsService
@@ -16,7 +17,7 @@ class ServiceModule {
         return EmailService()
     }
 
-    @Named("sms")
+    @MessageQualifiers
     @Provides
     fun provideSmsService(): NotificationService{
         return SmsService()
