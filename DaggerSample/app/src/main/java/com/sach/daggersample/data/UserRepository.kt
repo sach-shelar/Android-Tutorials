@@ -1,7 +1,9 @@
 package com.sach.daggersample.data
 
 import android.util.Log
+import com.sach.daggersample.dagger.AppScope
 import javax.inject.Inject
+import javax.inject.Singleton
 
 
 interface UserRepository {
@@ -9,6 +11,7 @@ interface UserRepository {
 }
 
 
+@AppScope
 class SqlRepository @Inject constructor() : UserRepository {
 
     override fun saveUser() {
