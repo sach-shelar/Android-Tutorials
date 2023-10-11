@@ -1,11 +1,11 @@
-package com.sach.daggersample.dagger
+package com.sach.daggersample.dagger.scope
 
 import java.lang.annotation.Documented
 import java.lang.annotation.Retention
 import java.lang.annotation.RetentionPolicy
-import javax.inject.Scope
+import javax.inject.Qualifier
 
-@Scope
+@Qualifier
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-annotation class AppScope()
+annotation class MessageQualifiers()

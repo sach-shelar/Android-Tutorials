@@ -1,23 +1,17 @@
-package com.sach.daggersample
+package com.sach.daggersample.ui
 
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.sach.daggersample.dagger.DaggerAppComponent
-import com.sach.daggersample.data.Constant
-import com.sach.daggersample.data.NotificationService
-import com.sach.daggersample.data.UserRegistrationService
-import com.sach.daggersample.data.module.ServiceModule
+import com.sach.daggersample.DaggerApp
+import com.sach.daggersample.core.Constant
+import com.sach.daggersample.dagger.component.DaggerActivityComponent
+import com.sach.daggersample.data.repository.UserRegistrationService
 import com.sach.daggersample.ui.theme.DaggerSampleTheme
 import javax.inject.Inject
 
@@ -26,20 +20,20 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var userRegistrationService: UserRegistrationService
 
-    @Inject
-    lateinit var userRegistrationService2: UserRegistrationService
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
 
 
-            val component = (application as DaggerApp).appComponent
+            /*val component =
             Log.e(Constant.TAG,"${component.toString()}")
             component.inject(this)
-
-
-            userRegistrationService2.registerUser("india@gmail.com", "india@123")
+*/
+            val appComponent = (application as DaggerApp).appComponent
+            val component = DaggerActivityComponent.factory().create(10,appComponent)
+            component.inject(this)
             userRegistrationService.registerUser("india@gmail.com", "india@123")
 
 
