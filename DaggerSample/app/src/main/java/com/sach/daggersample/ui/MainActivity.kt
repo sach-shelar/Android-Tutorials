@@ -10,7 +10,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.sach.daggersample.DaggerApp
 import com.sach.daggersample.core.Constant
-import com.sach.daggersample.dagger.component.DaggerActivityComponent
 import com.sach.daggersample.data.repository.UserRegistrationService
 import com.sach.daggersample.ui.theme.DaggerSampleTheme
 import javax.inject.Inject
@@ -19,7 +18,6 @@ class MainActivity : ComponentActivity() {
 
     @Inject
     lateinit var userRegistrationService: UserRegistrationService
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +30,7 @@ class MainActivity : ComponentActivity() {
             component.inject(this)
 */
             val appComponent = (application as DaggerApp).appComponent
-            val component = DaggerActivityComponent.factory().create(10,appComponent)
+            val component = appComponent.getActivityComponent().create(10)
             component.inject(this)
             userRegistrationService.registerUser("india@gmail.com", "india@123")
 

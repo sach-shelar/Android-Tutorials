@@ -9,7 +9,11 @@ import javax.inject.Singleton
 @Component(modules = [AnalyticsServiceModule::class])
 interface AppComponent {
 
-    fun getAnalyticsService(): AnalyticsService
+    //No need to expose object.
+    // fun getAnalyticsService(): AnalyticsService
 
+    fun getActivityComponent(): ActivityComponent.Factory
+
+    fun getActivityComponent2(): SecondActivityComponent
 
 }

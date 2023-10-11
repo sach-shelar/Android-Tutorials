@@ -7,18 +7,19 @@ import com.sach.daggersample.dagger.scope.ActivityScope
 import com.sach.daggersample.dagger.scope.AppScope
 import dagger.BindsInstance
 import dagger.Component
+import dagger.Subcomponent
 import javax.inject.Singleton
 
 @ActivityScope
-@Component(dependencies = [AppComponent::class], modules = [MessageServiceModule::class, UserRepositoryModule::class])
+@Subcomponent(modules = [MessageServiceModule::class, UserRepositoryModule::class])
 interface ActivityComponent {
 
     //this is required for filed injection
     fun inject(mainActivity: MainActivity)
 
-    @Component.Factory
+    @Subcomponent.Factory
     interface Factory{
-        fun create(@BindsInstance retryCount:Int,appComponent: AppComponent): ActivityComponent
+        fun create(@BindsInstance retryCount:Int): ActivityComponent
     }
 
 }
